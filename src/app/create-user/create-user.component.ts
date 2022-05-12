@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-create-user',
@@ -8,6 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateUserComponent implements OnInit {
   userForm: FormGroup = null;
+  minDate = new Date();
+  maxDate = new Date(this.minDate.getFullYear() - 100, 0, 1); // yy/mm/dd  ** month starts from 0
 
   constructor(private fb: FormBuilder) {}
 
