@@ -1,0 +1,22 @@
+<mat-toolbar class="mat-elevation-z5" color="primary" fxLayout="column" fxLayout.gt-sm="row"
+    fxLayoutAlign.gt-sm="space-between center">
+    <span>
+        <span style="margin-right: 10px">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">menu_book</mat-icon>
+            User Manager
+        </span>
+
+    </span>
+
+    <span>
+      <span fxShow="true" fxHide.lt-md="true"><a mat-button routerLink="/users" routerLinkActive="activebutton">Users</a></span>
+
+      <span fxShow="true" fxHide.lt-md="true"><a mat-button routerLink="/create-user" routerLinkActive="activebutton">Create User</a></span>
+    </span>
+
+</mat-toolbar>
+
+<mat-action-list fxShow="true" fxHide.gt-sm="true" fxLayout="column" fxLayoutAlign="center center">
+    <button mat-button routerLink="/users" routerLinkActive="activebutton"> Users</button>
+    <button mat-button routerLink="/create-user" routerLinkActive="activebutton"> Create User </button>
+</mat-action-list>
