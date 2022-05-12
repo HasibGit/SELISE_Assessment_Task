@@ -8,6 +8,13 @@ import {
 import { formatDate } from '@angular/common';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs';
+import {
+  HttpClient,
+  HttpClientModule,
+  HttpEventType,
+  HttpHeaders,
+  HttpParams,
+} from '@angular/common/http';
 
 @Component({
   selector: 'app-create-user',
@@ -21,9 +28,15 @@ export class CreateUserComponent implements OnInit {
   options: string[] = ['angular', 'react', 'vue'];
   filteredOptions: Observable<string[]>;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   ngOnInit(): void {
+    this.http
+      .get('https://countriesnow.space/api/v0.1/countries')
+      .subscribe((response) => {
+        console.log(response);
+      });
+
     this.createUserForm();
 
     this.filteredOptions = this.userForm.controls['City'].valueChanges.pipe(
@@ -59,7 +72,7 @@ export class CreateUserComponent implements OnInit {
       ],
       Email: ['', [Validators.email, Validators.required]],
       Sex: ['', [Validators.required]],
-      DateOfBirth: [null, [Validators.required]],
+      DateOfBirth: [{ value: null, disabled: true }, [Validators.required]],
       City: ['', []],
       PhoneNumber: ['', [Validators.required]],
     });

@@ -60,7 +60,7 @@
 
                 <mat-form-field fxFlex="48%" appearance="fill" >
                   <mat-label>Date Of Birth</mat-label>
-                  <input matInput [disabled]="true" formControlName="DateOfBirth" [matDatepicker]="datePicker" [min]="maxDate" [max]="minDate">
+                  <input matInput formControlName="DateOfBirth" [matDatepicker]="datePicker" [min]="maxDate" [max]="minDate">
                   <mat-datepicker-toggle [for]="datePicker" matSuffix></mat-datepicker-toggle>
                   <mat-datepicker #datePicker disabled="false"></mat-datepicker>
                   <mat-error *ngIf="userForm.controls.DateOfBirth.errors?.required && userForm.controls.DateOfBirth.touched">This field is required</mat-error>

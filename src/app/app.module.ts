@@ -6,6 +6,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 import { HeaderComponent } from './header/header.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -70,6 +72,7 @@ const routes: Routes = [
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
