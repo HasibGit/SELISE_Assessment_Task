@@ -19,6 +19,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersComponent } from './users/users.component';
 
@@ -60,6 +61,7 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
+    MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
   ],

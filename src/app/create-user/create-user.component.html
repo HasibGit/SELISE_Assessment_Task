@@ -1,1 +1,70 @@
-<p>create-user works!</p>
+
+<div fxLayout="row" fxLayoutAlign="center center" class="make-space-above">
+  <form
+        (keydown.enter)="$event.preventDefault()"
+        [formGroup]="userForm"
+        fxLayout="column"
+				fxLayoutAlign="start stretch"
+        fxFlex="60%"
+        fxFlex.lt-md="100%"
+  >
+      <mat-card fxLayout="column">
+
+      
+              <!-- FirstName and LastName start  -->
+              <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between center">
+        
+                <mat-form-field fxFlex="48%" appearance="outline">
+                  <mat-label>First Name</mat-label>
+                  <input matInput required name="FirstName" formControlName="FirstName"/>
+                  <mat-error *ngIf="userForm.controls.FirstName.errors?.required && userForm.controls.FirstName.touched">This field is required</mat-error>
+                  <mat-error *ngIf="userForm.controls.FirstName.errors?.minlength && userForm.controls.FirstName.touched">Name is too short</mat-error>
+                  <mat-error *ngIf="userForm.controls.FirstName.errors?.maxlength && userForm.controls.FirstName.touched">Name is too long</mat-error>
+                </mat-form-field>
+        
+                <mat-form-field fxFlex="48%" appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput required name="LastName" formControlName="LastName"/>
+                  <mat-error *ngIf="userForm.controls.LastName.errors?.required && userForm.controls.LastName.touched">This field is required</mat-error>
+                  <mat-error *ngIf="userForm.controls.LastName.errors?.minlength && userForm.controls.LastName.touched">Name is too short</mat-error>
+                  <mat-error *ngIf="userForm.controls.LastName.errors?.maxlength && userForm.controls.LastName.touched">Name is too long</mat-error>
+                </mat-form-field>
+              </div>
+              <!-- FirstName and LastName end  -->
+
+              <!-- Email Field Start  -->
+              <div fxFlex="100">
+                <mat-form-field fxFlex="100%" appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input matInput name="Email" formControlName="Email" type="email" required/>
+                  <mat-icon matSuffix>mail_outline</mat-icon>
+                  <mat-error *ngIf="userForm.controls.Email.errors?.required && userForm.controls.Email.touched">This field is required</mat-error>
+                  <mat-error *ngIf="userForm.controls.Email.errors?.email && userForm.controls.Email.touched">Invalid email</mat-error>
+                </mat-form-field>
+              </div>
+              <!-- Email Field End  -->
+
+              <!-- Gender And Date Of Birth Start -->
+
+              <div fxFlex="100" fxLayoutAlign="row wrap" fxLayoutAlign="space-between center" >
+
+
+                <mat-form-field fxFlex="48%" appearance="outline" >
+                  <mat-label>Gender</mat-label>
+                  <mat-select>
+                    <mat-option>Male</mat-option>
+                    <mat-option>Female</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+              <!-- Gender And Date Of Birth End -->
+        
+      
+      </mat-card>
+</form>
+</div>
+
+
+
