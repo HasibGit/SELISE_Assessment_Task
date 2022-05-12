@@ -82,8 +82,16 @@
                       {{option}}
                     </mat-option>
                   </mat-autocomplete>
-
                 </mat-form-field>
+
+                <mat-form-field fxFlex="48%" appearance="outline">
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput placeholder="Enter phone number" (keypress)="numericOnly($event)" formControlName="PhoneNumber"/>
+                  <mat-error *ngIf="userForm.controls.PhoneNumber.errors?.required && userForm.controls.PhoneNumber.touched">This field is required</mat-error>
+                  <mat-error *ngIf="userForm.controls.PhoneNumber.errors?.minlength && userForm.controls.PhoneNumber.touched">Phone must be at least 11 digits long.</mat-error> 
+                </mat-form-field>
+
+
               </div>
               <!-- City And Phone Number End  -->
         
