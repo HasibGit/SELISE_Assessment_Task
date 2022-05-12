@@ -58,7 +58,7 @@
                   <mat-error *ngIf="userForm.controls.Sex.errors?.required && userForm.controls.Sex.touched">This field is required</mat-error>
                 </mat-form-field>
 
-                <mat-form-field fxFlex="48%" appearance="outline" >
+                <mat-form-field fxFlex="48%" appearance="fill" >
                   <mat-label>Date Of Birth</mat-label>
                   <input matInput [disabled]="true" formControlName="DateOfBirth" [matDatepicker]="datePicker" [min]="maxDate" [max]="minDate">
                   <mat-datepicker-toggle [for]="datePicker" matSuffix></mat-datepicker-toggle>
@@ -69,6 +69,23 @@
               </div>
 
               <!-- Gender And Date Of Birth End -->
+
+
+              <!-- City And Phone Number Start  -->
+              <div fxFlex="100" fxLayoutAlign="row wrap" fxLayoutAlign="space-between center">
+                <mat-form-field fxFlex="48%" appearance="outline" >
+                  <mat-label>City</mat-label>
+                  <input matInput type="text" formControlName="City" [matAutocomplete]="auto">
+
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-autocomplete>
+
+                </mat-form-field>
+              </div>
+              <!-- City And Phone Number End  -->
         
       
       </mat-card>
