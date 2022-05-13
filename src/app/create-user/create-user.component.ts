@@ -16,6 +16,7 @@ import {
   HttpParams,
 } from '@angular/common/http';
 import { DataStorageService } from '../data-storage.service';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-create-user',
@@ -28,6 +29,7 @@ export class CreateUserComponent implements OnInit {
   maxDate = new Date(this.minDate.getFullYear() - 100, 0, 1); // yy/mm/dd  ** month starts from 0
   cities: string[];
   filteredOptions: Observable<string[]>;
+  newUser: User;
 
   constructor(
     private fb: FormBuilder,
@@ -94,5 +96,10 @@ export class CreateUserComponent implements OnInit {
     let patt = /^([0-9])$/;
     let result = patt.test(event.key);
     return result;
+  }
+
+  onSubmit() {
+    this.newUser = this.userForm.value;
+    console.log(this.newUser);
   }
 }
