@@ -36,12 +36,13 @@ import { UserResolverService } from './user-resolver.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/users',
+    redirectTo: '/create-user',
     pathMatch: 'full',
   },
   {
     path: 'create-user',
     component: CreateUserComponent,
+    resolve: [UserResolverService],
   },
   {
     path: 'users',

@@ -14,16 +14,9 @@ import { User } from './user.model';
 export class UserResolverService {
   constructor(private dataStorageService: DataStorageService) {}
 
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): User[] | Observable<User[]> {
-    const users = this.dataStorageService.getUsers();
-
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (!this.dataStorageService.hasData()) {
       this.dataStorageService.fetchUsers();
-    } else {
-      return users;
     }
   }
 }
