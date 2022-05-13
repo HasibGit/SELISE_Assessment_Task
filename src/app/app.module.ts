@@ -32,6 +32,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ErrorSnackbarComponent } from './error-snackbar/error-snackbar.component';
 import { SuccessSnackbarComponent } from './success-snackbar/success-snackbar.component';
 import { UserListResolverService } from './users/user-list-resolver.service';
+import { DatePipe } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -84,7 +85,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

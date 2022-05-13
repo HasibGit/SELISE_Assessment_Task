@@ -3,6 +3,7 @@ import { DataStorageService } from '../data-storage.service';
 import { User } from '../user.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-users',
@@ -24,7 +25,8 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private dataStorageService: DataStorageService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private date: DatePipe
   ) {
     this.users = this.activatedRoute.snapshot.data['userList'];
     this.listData = new MatTableDataSource(this.users);

@@ -13,7 +13,7 @@
 
     <ng-container matColumnDef="DateOfBirth">
       <mat-header-cell *matHeaderCellDef>Date Of Birth</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.DateOfBirth}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{element.DateOfBirth | date: 'mediumDate'}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Email">
