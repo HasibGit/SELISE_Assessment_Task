@@ -4,6 +4,7 @@ export interface User {
   PhoneNumber: string;
   Email: string;
   Sex: string;
+  DateOfBirth: string;
   City: string;
   id?: string;
 }
