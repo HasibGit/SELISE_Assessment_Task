@@ -2,8 +2,28 @@
   <mat-table [dataSource]="listData">
 
     <ng-container matColumnDef="Name">
-      <mat-header-cell *matHeaderCellDef>Full Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.FirstName}} {{element.LastName}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Gender">
+      <mat-header-cell *matHeaderCellDef>Gender</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.Sex}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="DateOfBirth">
+      <mat-header-cell *matHeaderCellDef>Date Of Birth</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.DateOfBirth}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.Email}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="PhoneNumber">
+      <mat-header-cell *matHeaderCellDef>Phone No.</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.PhoneNumber}}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

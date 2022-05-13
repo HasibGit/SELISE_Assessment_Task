@@ -67,6 +67,8 @@
                   <mat-datepicker-toggle [for]="datePicker" matSuffix></mat-datepicker-toggle>
                   <mat-datepicker #datePicker disabled="false"></mat-datepicker>
                   <mat-error *ngIf="userForm.controls.DateOfBirth.errors?.required && userForm.controls.DateOfBirth.touched">This field is required</mat-error>
+                  <mat-error *ngIf="userForm.controls.DateOfBirth.errors?.matDatepickerMin && userForm.controls.DateOfBirth.touched">Date of birth cannot be before 100 years</mat-error>
+                  <mat-error *ngIf="userForm.controls.DateOfBirth.errors?.matDatepickerMax && userForm.controls.DateOfBirth.touched">Date of birth cannot be in the future</mat-error>
                 </mat-form-field>
 
               </div>

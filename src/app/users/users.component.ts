@@ -14,7 +14,13 @@ export class UsersComponent implements OnInit {
   isFetching: boolean = false;
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['Name'];
+  displayedColumns: string[] = [
+    'Name',
+    'Gender',
+    'DateOfBirth',
+    'Email',
+    'PhoneNumber',
+  ];
 
   constructor(
     private dataStorageService: DataStorageService,
