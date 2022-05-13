@@ -31,23 +31,22 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { ErrorSnackbarComponent } from './error-snackbar/error-snackbar.component';
 import { SuccessSnackbarComponent } from './success-snackbar/success-snackbar.component';
-import { UserResolverService } from './user-resolver.service';
+import { UserListResolverService } from './users/user-list-resolver.service';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/create-user',
+    redirectTo: '/users',
     pathMatch: 'full',
   },
   {
     path: 'create-user',
     component: CreateUserComponent,
-    resolve: [UserResolverService],
   },
   {
     path: 'users',
     component: UsersComponent,
-    resolve: [UserResolverService],
+    resolve: { userList: UserListResolverService },
   },
 ];
 

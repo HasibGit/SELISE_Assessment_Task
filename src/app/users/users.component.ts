@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../data-storage.service';
 import { User } from '../user.model';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -15,10 +16,16 @@ export class UsersComponent implements OnInit {
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['Name'];
 
-  constructor(private dataStorageService: DataStorageService) {}
+  constructor(
+    private dataStorageService: DataStorageService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.users = this.activatedRoute.snapshot.data['userList'];
+    this.listData = new MatTableDataSource(this.users);
+  }
 
   ngOnInit(): void {
-    this.users = this.dataStorageService.getUsers();
-    this.listData = new MatTableDataSource(this.users);
+    // this.users = this.dataStorageService.getUsers();
+    // this.listData = new MatTableDataSource(this.users);
   }
 }

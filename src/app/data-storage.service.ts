@@ -61,7 +61,7 @@ export class DataStorageService {
   }
 
   fetchUsers() {
-    this.http
+    return this.http
       .get<{ [key: string]: User }>(
         'https://selise-assessment-default-rtdb.firebaseio.com/users.json'
       )
@@ -75,10 +75,7 @@ export class DataStorageService {
           }
           return usersArray;
         })
-      )
-      .subscribe((response) => {
-        this.users = response;
-      });
+      );
   }
 
   getUsers(): User[] {
