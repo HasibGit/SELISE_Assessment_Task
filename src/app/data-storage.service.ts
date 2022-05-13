@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { User } from './user.model';
-import { Subject } from 'rxjs';
+import { catchError, map, Subject, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -56,6 +56,24 @@ export class DataStorageService {
       (error) => {
         this.error.next(error.message);
       };
+  }
+
+  fetchUsers() {
+    return this.http
+      .get<{ [key: string]: User }>(
+        'https://selise-assessment-default-rtdb.firebaseio.com/users.json'
+      )
+      .pipe(
+        map((response) => {
+          const usersArray = [];
+          for (const key in response) {
+            if (response.hasOwnProperty(key)) {
+              usersArray.push({ ...response[key], id: key });
+            }
+          }
+          return usersArray;
+        })
+      );
   }
 
   getCities(): string[] {

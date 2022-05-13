@@ -5,4 +5,5 @@ export interface User {
   Email: string;
   Sex: string;
   City: string;
+  id?: string;
 }
