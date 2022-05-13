@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { User } from './user.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +39,24 @@ export class DataStorageService {
     'Lisbon',
     'Vienna',
   ];
-  constructor() {}
+
+  error = new Subject<string>();
+
+  constructor(private http: HttpClient) {}
+
+  saveUser(user: User) {
+    this.http
+      .post(
+        'https://selise-assessment-default-rtdb.firebaseio.com/users.json',
+        user
+      )
+      .subscribe((response) => {
+        console.log(response);
+      }),
+      (error) => {
+        this.error.next(error.message);
+      };
+  }
 
   getCities(): string[] {
     return this.cities;

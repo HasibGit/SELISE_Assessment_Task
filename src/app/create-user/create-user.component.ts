@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormControl,
   FormBuilder,
@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { formatDate } from '@angular/common';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, startWith } from 'rxjs';
 import {
   HttpClient,
@@ -17,24 +17,32 @@ import {
 } from '@angular/common/http';
 import { DataStorageService } from '../data-storage.service';
 import { User } from '../user.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ErrorSnackbarComponent } from '../error-snackbar/error-snackbar.component';
+import { SuccessSnackbarComponent } from '../success-snackbar/success-snackbar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.scss'],
 })
-export class CreateUserComponent implements OnInit {
+export class CreateUserComponent implements OnInit, OnDestroy {
   userForm: FormGroup = null;
   minDate = new Date();
   maxDate = new Date(this.minDate.getFullYear() - 100, 0, 1); // yy/mm/dd  ** month starts from 0
   cities: string[];
   filteredOptions: Observable<string[]>;
   newUser: User;
+  error = null;
+  errorSubscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private dataStorageService: DataStorageService
+    private dataStorageService: DataStorageService,
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +56,12 @@ export class CreateUserComponent implements OnInit {
     //       }
     //     }
     //   });
+
+    this.errorSubscription = this.dataStorageService.error.subscribe(
+      (errorMsg) => {
+        this.error = errorMsg;
+      }
+    );
 
     this.cities = this.dataStorageService.getCities();
 
@@ -98,8 +112,32 @@ export class CreateUserComponent implements OnInit {
     return result;
   }
 
-  onSubmit() {
+  onSaveUser() {
     this.newUser = this.userForm.value;
-    console.log(this.newUser);
+    this.dataStorageService.saveUser(this.newUser);
+
+    if (this.error) {
+      this.errorSnackBar();
+      this.userForm.reset();
+    } else {
+      this.successSnackBar();
+      this.router.navigate(['/users']);
+    }
+  }
+
+  errorSnackBar() {
+    this._snackBar.openFromComponent(ErrorSnackbarComponent, {
+      duration: 3000,
+    });
+  }
+
+  successSnackBar() {
+    this._snackBar.openFromComponent(SuccessSnackbarComponent, {
+      duration: 3000,
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.errorSubscription.unsubscribe();
   }
 }

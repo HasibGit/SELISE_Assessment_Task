@@ -27,6 +27,9 @@ import { UsersComponent } from './users/users.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ErrorSnackbarComponent } from './error-snackbar/error-snackbar.component';
+import { SuccessSnackbarComponent } from './success-snackbar/success-snackbar.component';
 
 const routes: Routes = [
   {
@@ -50,6 +53,8 @@ const routes: Routes = [
     CreateUserComponent,
     HeaderComponent,
     UsersComponent,
+    ErrorSnackbarComponent,
+    SuccessSnackbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +75,7 @@ const routes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatAutocompleteModule,
+    MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
