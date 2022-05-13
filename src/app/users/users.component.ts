@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../data-storage.service';
 import { User } from '../user.model';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-users',
@@ -11,13 +12,13 @@ export class UsersComponent implements OnInit {
   users: User[];
   isFetching: boolean = false;
 
+  listData: MatTableDataSource<any>;
+  displayedColumns: string[] = ['Name'];
+
   constructor(private dataStorageService: DataStorageService) {}
 
   ngOnInit(): void {
-    this.isFetching = true;
-    this.dataStorageService.fetchUsers().subscribe((response) => {
-      this.users = response;
-      this.isFetching = false;
-    });
+    this.users = this.dataStorageService.getUsers();
+    this.listData = new MatTableDataSource(this.users);
   }
 }

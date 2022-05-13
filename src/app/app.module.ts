@@ -28,8 +28,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 import { ErrorSnackbarComponent } from './error-snackbar/error-snackbar.component';
 import { SuccessSnackbarComponent } from './success-snackbar/success-snackbar.component';
+import { UserResolverService } from './user-resolver.service';
 
 const routes: Routes = [
   {
@@ -44,6 +46,7 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
+    resolve: [UserResolverService],
   },
 ];
 
@@ -76,6 +79,7 @@ const routes: Routes = [
     MatNativeDateModule,
     MatAutocompleteModule,
     MatSnackBarModule,
+    MatTableModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

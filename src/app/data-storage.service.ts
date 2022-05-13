@@ -42,6 +42,8 @@ export class DataStorageService {
 
   error = new Subject<string>();
 
+  users: User[];
+
   constructor(private http: HttpClient) {}
 
   saveUser(user: User) {
@@ -59,7 +61,7 @@ export class DataStorageService {
   }
 
   fetchUsers() {
-    return this.http
+    this.http
       .get<{ [key: string]: User }>(
         'https://selise-assessment-default-rtdb.firebaseio.com/users.json'
       )
@@ -73,7 +75,21 @@ export class DataStorageService {
           }
           return usersArray;
         })
-      );
+      )
+      .subscribe((response) => {
+        this.users = response;
+      });
+  }
+
+  getUsers(): User[] {
+    return this.users;
+  }
+
+  hasData() {
+    if (this.users) {
+      return true;
+    }
+    return false;
   }
 
   getCities(): string[] {
