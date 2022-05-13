@@ -17,6 +17,7 @@
                 <mat-form-field fxFlex="48%" appearance="outline">
                   <mat-label>First Name</mat-label>
                   <input matInput required name="FirstName" formControlName="FirstName"/>
+                  <mat-icon matSuffix>mode_edit</mat-icon>
                   <mat-error *ngIf="userForm.controls.FirstName.errors?.required && userForm.controls.FirstName.touched">This field is required</mat-error>
                   <mat-error *ngIf="userForm.controls.FirstName.errors?.minlength && userForm.controls.FirstName.touched">Name is too short</mat-error>
                   <mat-error *ngIf="userForm.controls.FirstName.errors?.maxlength && userForm.controls.FirstName.touched">Name is too long</mat-error>
@@ -25,6 +26,7 @@
                 <mat-form-field fxFlex="48%" appearance="outline">
                   <mat-label>Last Name</mat-label>
                   <input matInput required name="LastName" formControlName="LastName"/>
+                  <mat-icon matSuffix>mode_edit</mat-icon>
                   <mat-error *ngIf="userForm.controls.LastName.errors?.required && userForm.controls.LastName.touched">This field is required</mat-error>
                   <mat-error *ngIf="userForm.controls.LastName.errors?.minlength && userForm.controls.LastName.touched">Name is too short</mat-error>
                   <mat-error *ngIf="userForm.controls.LastName.errors?.maxlength && userForm.controls.LastName.touched">Name is too long</mat-error>
@@ -76,6 +78,7 @@
                 <mat-form-field fxFlex="48%" appearance="outline" >
                   <mat-label>City</mat-label>
                   <input matInput type="text" formControlName="City" [matAutocomplete]="auto">
+                  <mat-icon matSuffix>mode_edit</mat-icon>
 
                   <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -84,9 +87,11 @@
                   </mat-autocomplete>
                 </mat-form-field>
 
-                <mat-form-field fxFlex="48%" appearance="outline">
+                <mat-form-field fxFlex="48%" appearance="fill">
                   <mat-label>Phone Number</mat-label>
-                  <input matInput placeholder="Enter phone number" (keypress)="numericOnly($event)" formControlName="PhoneNumber"/>
+                  <span matPrefix>+88 &nbsp;</span>
+                  <input type="tel" matInput placeholder="Phone number" (keypress)="numericOnly($event)" formControlName="PhoneNumber"/>
+                  <mat-icon matSuffix>mode_edit</mat-icon>
                   <mat-error *ngIf="userForm.controls.PhoneNumber.errors?.required && userForm.controls.PhoneNumber.touched">This field is required</mat-error>
                   <mat-error *ngIf="userForm.controls.PhoneNumber.errors?.minlength && userForm.controls.PhoneNumber.touched">Phone must be at least 11 digits long.</mat-error> 
                 </mat-form-field>
@@ -95,6 +100,16 @@
               </div>
               <!-- City And Phone Number End  -->
         
+              <div fxFlex="50%" fxLayout="row wrap" fxLayoutAlign="end center" fxLayoutGap="25px">
+                  <!-- <div fxFlex="20%">
+                    <button type="button" mat-raised-button>Cancel</button>
+                  </div>
+                  <div fxFlex="20%">
+                    <button type="button" mat-raised-button>Cancel</button>
+                  </div> -->
+                  <button type="button" mat-raised-button>Cancel</button>
+                  <button type="button" mat-raised-button color="primary">Save</button>
+              </div>
       
       </mat-card>
 </form>
