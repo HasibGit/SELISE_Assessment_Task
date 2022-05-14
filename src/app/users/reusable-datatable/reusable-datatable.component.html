@@ -1,1 +1,22 @@
-<p>reusable-datatable works!</p>
+<p>reusable-datatable Starts!</p>
+
+
+<div class="mat-elevation-z1">
+
+  <mat-table [dataSource]="listData">
+
+
+    <ng-container *ngFor="let column of displayedColumns" matColumnDef={{column}}>
+      <mat-header-cell *matHeaderCellDef>{{column}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element}}</mat-cell>
+    </ng-container>
+    
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+</div>
+
+<p>reusable-datatable Ends!</p>

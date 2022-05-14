@@ -18,9 +18,15 @@ import { MatPaginator } from '@angular/material/paginator';
 export class ReusableDatatableComponent implements OnInit {
   @Input('tableConfig') config;
 
+  listData: MatTableDataSource<any>;
+  displayedColumns: string[];
+
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.config);
+    this.listData = new MatTableDataSource(this.config[0]);
+    this.displayedColumns = this.config[1];
+
+    console.log(this.displayedColumns);
   }
 }
