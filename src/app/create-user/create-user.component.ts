@@ -114,6 +114,10 @@ export class CreateUserComponent implements OnInit, OnDestroy {
 
   onSaveUser() {
     this.newUser = this.userForm.value;
+    this.newUser.FullName =
+      this.userForm.controls.FirstName.value +
+      ' ' +
+      this.userForm.controls.LastName.value;
     this.dataStorageService.saveUser(this.newUser);
 
     if (this.error) {

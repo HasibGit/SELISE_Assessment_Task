@@ -1,9 +1,9 @@
 <div class="mat-elevation-z1">
   <mat-table [dataSource]="listData" matSort #userTbSort="matSort">
 
-    <ng-container matColumnDef="FirstName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>FirstName</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.FirstName}}</mat-cell>
+    <ng-container matColumnDef="FullName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.FullName}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Gender">
@@ -34,6 +34,6 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    <mat-footer-row *matFooterRowDef="['noData']" [style.display]="users ? 'none' : 'block'"></mat-footer-row>
+    <mat-footer-row *matFooterRowDef="['noData']" [style.display]="listData ? 'none' : 'block'"></mat-footer-row>
   </mat-table>
 </div>

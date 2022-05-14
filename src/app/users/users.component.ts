@@ -17,7 +17,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = [
-    'FirstName',
+    'FullName',
     'Email',
     'DateOfBirth',
     'Gender',
