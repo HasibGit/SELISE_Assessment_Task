@@ -18,6 +18,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   searchKey: string;
 
   listData: MatTableDataSource<any>;
+
   displayedColumns: string[] = [
     'FullName',
     'Email',
@@ -26,13 +27,19 @@ export class UsersComponent implements OnInit, AfterViewInit {
     'PhoneNumber',
   ];
 
+  columnHeaders: string[] = [
+    'Name',
+    'Email',
+    'Date Of Birth',
+    'Gender',
+    'Phone Number',
+  ];
+
   tableConfig = [];
   pageSizeOptions = [5, 10, 25, 100];
   initialPageSize = 10;
-  sortableColumns = {
-    FullName: true,
-    DateOfBirth: true,
-  };
+
+  sortableColumns = ['FullName', 'DateOfBirth'];
 
   @ViewChild('userTbSort') userTbSort = new MatSort();
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -49,6 +56,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
     this.tableConfig = [
       this.users,
       this.displayedColumns,
+      this.columnHeaders,
       this.sortableColumns,
       this.pageSizeOptions,
       this.initialPageSize,
