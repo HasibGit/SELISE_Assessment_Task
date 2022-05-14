@@ -41,4 +41,21 @@
   mat-header-row{
     background-color: #E1E5EA;
   }
+
+  mat-header-cell{
+    border: 1px solid #C9CCD5;
+    padding-left: 24px;
+  }
+
+  mat-row:hover{
+    background-color: #F7F7F7;
+    cursor: pointer;
+  }
+
+  mat-row :first-child{
+    padding-left: 24px;
+  }
+  mat-row :last-child{
+    padding-right: 0;
+  }
 }
