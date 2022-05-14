@@ -1,24 +1,22 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { DataStorageService } from '../data-storage.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../user.model';
-import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-import { DatePipe } from '@angular/common';
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
 })
-export class UsersComponent implements OnInit, AfterViewInit {
+export class UsersComponent implements OnInit {
   users: User[];
   isFetching: boolean = false;
   searchKey: string;
 
-  listData: MatTableDataSource<any>;
+  /*
+                  ####################### Table Configuration Starts ###########################
+  */
 
+  data;
   displayedColumns: string[] = [
     'FullName',
     'Email',
@@ -26,7 +24,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
     'Gender',
     'PhoneNumber',
   ];
-
   columnHeaders: string[] = [
     'Name',
     'Email',
@@ -34,53 +31,29 @@ export class UsersComponent implements OnInit, AfterViewInit {
     'Gender',
     'Phone Number',
   ];
-
-  tableConfig = [];
+  sortableColumns = ['FullName', 'DateOfBirth'];
   pageSizeOptions = [5, 10, 25, 100];
   initialPageSize = 10;
 
-  sortableColumns = ['FullName', 'DateOfBirth'];
+  /*
+                  ####################### Table Configuration Ends ###########################
+  */
 
-  @ViewChild('userTbSort') userTbSort = new MatSort();
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  tableConfig = [];
 
-  constructor(
-    private dataStorageService: DataStorageService,
-    private activatedRoute: ActivatedRoute,
-    private date: DatePipe
-  ) {
+  constructor(private activatedRoute: ActivatedRoute) {
     this.users = this.activatedRoute.snapshot.data['userList'];
-
-    // Test start
+    this.data = this.users;
 
     this.tableConfig = [
-      this.users,
+      this.data,
       this.displayedColumns,
       this.columnHeaders,
       this.sortableColumns,
       this.pageSizeOptions,
       this.initialPageSize,
     ];
-
-    // Test end
-
-    this.listData = new MatTableDataSource(this.users);
-    console.log(this.listData);
   }
 
   ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
-    this.listData.sort = this.userTbSort;
-    this.listData.paginator = this.paginator;
-  }
-
-  onSearchClear() {
-    this.searchKey = '';
-    this.applyFilter();
-  }
-
-  applyFilter() {
-    this.listData.filter = this.searchKey.trim().toLowerCase();
-  }
 }

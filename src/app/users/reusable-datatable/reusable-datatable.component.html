@@ -1,12 +1,11 @@
-<p>reusable-datatable Starts!</p>
 
 
 <div class="make-space-above">
   <mat-form-field class="search-form-field" floatLabel="never">
     <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
-    <button mat-button matPrefix mat-icon-button>
-      <mat-icon class="search-icon">search</mat-icon>
-    </button>
+    
+    <mat-icon matPrefix class="search-icon">search</mat-icon>
+    
     <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
       <mat-icon>close</mat-icon>
     </button>
@@ -41,4 +40,3 @@
 
 </div>
 
-<p>reusable-datatable Ends!</p>

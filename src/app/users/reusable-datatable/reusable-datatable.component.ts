@@ -38,8 +38,6 @@ export class ReusableDatatableComponent implements OnInit, AfterViewInit {
     this.sortableColumns = this.config[3];
     this.pageSizeOptions = this.config[4];
     this.initialPageSize = this.config[5];
-
-    console.log(this.sortableColumns);
   }
 
   ngAfterViewInit(): void {
