@@ -22,7 +22,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
     'FullName',
     'Email',
     'DateOfBirth',
-    'Sex',
+    'Gender',
     'PhoneNumber',
   ];
 

@@ -22,6 +22,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ErrorSnackbarComponent } from '../error-snackbar/error-snackbar.component';
 import { SuccessSnackbarComponent } from '../success-snackbar/success-snackbar.component';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-create-user',
@@ -43,7 +44,8 @@ export class CreateUserComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private dataStorageService: DataStorageService,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -100,7 +102,7 @@ export class CreateUserComponent implements OnInit, OnDestroy {
         ],
       ],
       Email: ['', [Validators.email, Validators.required]],
-      Sex: ['', [Validators.required]],
+      Gender: ['', [Validators.required]],
       DateOfBirth: ['', [Validators.required]],
       City: ['', []],
       PhoneNumber: ['', [Validators.required, Validators.minLength(11)]],
@@ -115,6 +117,10 @@ export class CreateUserComponent implements OnInit, OnDestroy {
 
   onSaveUser(formDirective: FormGroupDirective) {
     this.newUser = this.userForm.value;
+    this.newUser.DateOfBirth = this.datePipe.transform(
+      this.newUser.DateOfBirth,
+      'mediumDate'
+    );
     this.newUser.FullName =
       this.userForm.controls.FirstName.value +
       ' ' +

@@ -55,11 +55,11 @@
 
                 <mat-form-field fxFlex="48%" appearance="outline" >
                   <mat-label>Gender</mat-label>
-                  <mat-select formControlName="Sex">
+                  <mat-select formControlName="Gender">
                     <mat-option value="Male">Male</mat-option>
                     <mat-option value="Female">Female</mat-option>
                   </mat-select>
-                  <mat-error *ngIf="userForm.controls.Sex.errors?.required && userForm.controls.Sex.touched">This field is required</mat-error>
+                  <mat-error *ngIf="userForm.controls.Gender.errors?.required && userForm.controls.Gender.touched">This field is required</mat-error>
                 </mat-form-field>
 
                 <mat-form-field fxFlex="48%" appearance="fill" >
