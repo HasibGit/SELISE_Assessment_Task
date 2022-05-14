@@ -3,7 +3,8 @@
   <form
         (keydown.enter)="$event.preventDefault()"
         [formGroup]="userForm"
-        (ngSubmit)="onSaveUser()"
+        #formDirective="ngForm"
+        (ngSubmit)="onSaveUser(formDirective)"
         fxLayout="column"
 				fxLayoutAlign="start stretch"
         fxFlex="60%"

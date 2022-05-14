@@ -4,6 +4,7 @@ import {
   FormBuilder,
   FormGroup,
   Validators,
+  FormGroupDirective,
 } from '@angular/forms';
 import { formatDate } from '@angular/common';
 import { Observable, Subscription } from 'rxjs';
@@ -112,7 +113,7 @@ export class CreateUserComponent implements OnInit, OnDestroy {
     return result;
   }
 
-  onSaveUser() {
+  onSaveUser(formDirective: FormGroupDirective) {
     this.newUser = this.userForm.value;
     this.newUser.FullName =
       this.userForm.controls.FirstName.value +
@@ -120,12 +121,14 @@ export class CreateUserComponent implements OnInit, OnDestroy {
       this.userForm.controls.LastName.value;
     this.dataStorageService.saveUser(this.newUser);
 
+    formDirective.resetForm();
+    this.userForm.reset();
+
     if (this.error) {
       this.errorSnackBar();
-      this.userForm.reset();
     } else {
       this.successSnackBar();
-      this.router.navigate(['/users']);
+      // this.router.navigate(['/users']);
     }
   }
 
