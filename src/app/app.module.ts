@@ -35,6 +35,7 @@ import { ErrorSnackbarComponent } from './error-snackbar/error-snackbar.componen
 import { SuccessSnackbarComponent } from './success-snackbar/success-snackbar.component';
 import { UserListResolverService } from './users/user-list-resolver.service';
 import { DatePipe } from '@angular/common';
+import { ReusableDatatableComponent } from './users/reusable-datatable/reusable-datatable.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,7 @@ const routes: Routes = [
     UsersComponent,
     ErrorSnackbarComponent,
     SuccessSnackbarComponent,
+    ReusableDatatableComponent,
   ],
   imports: [
     BrowserModule,

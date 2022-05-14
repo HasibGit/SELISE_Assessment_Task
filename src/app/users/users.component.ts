@@ -26,6 +26,14 @@ export class UsersComponent implements OnInit, AfterViewInit {
     'PhoneNumber',
   ];
 
+  tableConfig = [];
+  pageSizeOptions = [5, 10, 25, 100];
+  initialPageSize = 10;
+  sortableColumns = {
+    FullName: true,
+    DateOfBirth: true,
+  };
+
   @ViewChild('userTbSort') userTbSort = new MatSort();
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -35,6 +43,19 @@ export class UsersComponent implements OnInit, AfterViewInit {
     private date: DatePipe
   ) {
     this.users = this.activatedRoute.snapshot.data['userList'];
+
+    // Test start
+
+    this.tableConfig = [
+      this.users,
+      this.displayedColumns,
+      this.sortableColumns,
+      this.pageSizeOptions,
+      this.initialPageSize,
+    ];
+
+    // Test end
+
     this.listData = new MatTableDataSource(this.users);
     console.log(this.listData);
   }
