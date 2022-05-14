@@ -15,6 +15,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class UsersComponent implements OnInit, AfterViewInit {
   users: User[];
   isFetching: boolean = false;
+  searchKey: string;
 
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = [
@@ -37,13 +38,14 @@ export class UsersComponent implements OnInit, AfterViewInit {
     this.listData = new MatTableDataSource(this.users);
   }
 
-  ngOnInit(): void {
-    // this.users = this.dataStorageService.getUsers();
-    // this.listData = new MatTableDataSource(this.users);
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.listData.sort = this.userTbSort;
     this.listData.paginator = this.paginator;
+  }
+
+  onSearchClear() {
+    this.searchKey = '';
   }
 }
