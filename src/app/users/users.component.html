@@ -1,4 +1,4 @@
-<div class="mat-elevation-z1">
+<div class="mat-elevation-z1 make-space-above">
   <mat-table [dataSource]="listData" matSort #userTbSort="matSort">
 
     <ng-container matColumnDef="FullName">
@@ -36,4 +36,7 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     <mat-footer-row *matFooterRowDef="['noData']" [style.display]="listData ? 'none' : 'block'"></mat-footer-row>
   </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+
 </div>

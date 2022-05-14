@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { MatSort, Sort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-users',
@@ -25,6 +26,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   ];
 
   @ViewChild('userTbSort') userTbSort = new MatSort();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -42,5 +44,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.listData.sort = this.userTbSort;
+    this.listData.paginator = this.paginator;
   }
 }
