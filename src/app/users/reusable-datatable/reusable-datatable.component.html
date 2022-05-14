@@ -8,7 +8,7 @@
 
     <ng-container *ngFor="let column of displayedColumns" matColumnDef={{column}}>
       <mat-header-cell *matHeaderCellDef>{{column}}</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{element[column]}}</mat-cell>
     </ng-container>
     
 
