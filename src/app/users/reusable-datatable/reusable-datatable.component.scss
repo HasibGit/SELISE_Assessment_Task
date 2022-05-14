@@ -45,6 +45,7 @@
   mat-header-cell{
     border: 1px solid #C9CCD5;
     padding-left: 24px;
+    font-weight: 600;
   }
 
   mat-row:hover{
@@ -58,4 +59,6 @@
   mat-row :last-child{
     padding-right: 0;
   }
+
+
 }

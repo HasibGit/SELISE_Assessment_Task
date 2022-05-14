@@ -20,7 +20,7 @@
 
     <ng-container *ngFor="let column of displayedColumns; index as i" matColumnDef={{column}}>
       <mat-header-cell *matHeaderCellDef  mat-sort-header [disabled]="sortableColumns.includes(column) ? false : true">{{columnHeaders[i]}}</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element[column]}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{ check(element[column]) }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="noData">

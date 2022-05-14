@@ -8,6 +8,7 @@ import {
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-reusable-datatable',
@@ -29,7 +30,7 @@ export class ReusableDatatableComponent implements OnInit, AfterViewInit {
   @ViewChild('userTbSort') userTbSort = new MatSort();
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() {}
+  constructor(private datepipe: DatePipe) {}
 
   ngOnInit(): void {
     this.listData = new MatTableDataSource(this.config[0]);
@@ -52,5 +53,14 @@ export class ReusableDatatableComponent implements OnInit, AfterViewInit {
 
   applyFilter() {
     this.listData.filter = this.searchKey.trim().toLowerCase();
+  }
+
+  check(data) {
+    var dateWrapper = new Date(data);
+    if (isNaN(dateWrapper.getDate())) {
+      return data;
+    } else {
+      return this.datepipe.transform(data, 'mediumDate');
+    }
   }
 }

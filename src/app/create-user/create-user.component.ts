@@ -124,10 +124,12 @@ export class CreateUserComponent implements OnInit, OnDestroy {
 
   onSaveUser(formDirective: FormGroupDirective) {
     this.newUser = this.userForm.value;
-    this.newUser.DateOfBirth = this.datePipe.transform(
-      this.newUser.DateOfBirth,
-      'mediumDate'
-    );
+
+    // this.newUser.DateOfBirth = this.datePipe.transform(
+    //   this.newUser.DateOfBirth,
+    //   'mediumDate'
+    // );
+
     this.newUser.FullName =
       this.userForm.controls.FirstName.value +
       ' ' +
