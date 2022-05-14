@@ -39,3 +39,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 32px;
   width: 32px;
 }
+
+.search-form-field div.mat-form-field-prefix button{
+  margin-right: 5px;
+}
+
+.search-icon{
+  transform: scale(1.5);
+}

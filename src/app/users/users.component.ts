@@ -36,6 +36,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   ) {
     this.users = this.activatedRoute.snapshot.data['userList'];
     this.listData = new MatTableDataSource(this.users);
+    console.log(this.listData);
   }
 
   ngOnInit(): void {}
@@ -47,5 +48,10 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   onSearchClear() {
     this.searchKey = '';
+    this.applyFilter();
+  }
+
+  applyFilter() {
+    this.listData.filter = this.searchKey.trim().toLowerCase();
   }
 }
