@@ -105,7 +105,14 @@ export class CreateUserComponent implements OnInit, OnDestroy {
       Gender: ['', [Validators.required]],
       DateOfBirth: ['', [Validators.required]],
       City: ['', []],
-      PhoneNumber: ['', [Validators.required, Validators.minLength(11)]],
+      PhoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(11),
+          Validators.minLength(11),
+        ],
+      ],
     });
   }
 
