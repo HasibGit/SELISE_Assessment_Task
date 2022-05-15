@@ -19,3 +19,8 @@ As for the database, i have used googles firebase service to store all the users
 ## Reusable List Component
 
 One of the key requirement of this assessment task was to create a reusable list component that can represent any arbitrary number data if we pass data to the component in a specific valid format. To achieve this purpose, i have modified the angular materials datatable component to make a reusable datatable component that has all the necessary functionalities like sorting, pagination, filtering etc. We just need to pass our data to the component in a proper format and component will represent our data as desired.
+
+## Project Deployment
+
+This project has been deployed on the firebase using firebase hosting service.
+Live project link: https://selise-assessment.web.app/
