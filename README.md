@@ -6,22 +6,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Web Interface
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+It consists of two menus, create and users. Upon clicking on the create menu button, you are taken to the user creation form component. All the required form field validations was implemented in the form. After giving valid information and clicking on save, a new user will be created.
 
-## Build
+In the users tab, all the users will be shown in a table list format.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Database
 
-## Running unit tests
+As for the database, i have used googles firebase service to store all the users data. Firebase REST APIs allow us to make requests to the Firebase Database for reading, writing, updating, or removing data. We can define any Firebase Realtime Database URL as a REST endpoint by adding . json in the end. Keeping our data safe, we can use the Firebase REST API to send requests via an HTTPS client.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Reusable List Component
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+One of the key requirement of this assessment task was to create a reusable list component that can represent any arbitrary number data if we pass data to the component in a specific valid format. To achieve this purpose, i have modified the angular materials datatable component to make a reusable datatable component that has all the necessary functionalities like sorting, pagination, filtering etc. We just need to pass our data to the component in a proper format and component will represent our data as desired.
